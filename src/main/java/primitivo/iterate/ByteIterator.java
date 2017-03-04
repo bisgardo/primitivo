@@ -9,7 +9,7 @@ import java.util.NoSuchElementException;
 public abstract class ByteIterator implements Iterator<Byte> {
 	
 	/**
-	 * Returns the unboxed byte of the value that {{@link #next()}} would have returned if it had been called instead.
+	 * Returns the unboxed byte of the value that {@link #next()} would have returned if it had been called instead.
 	 * @return the next byte value in the iteration.
 	 */
 	public abstract byte nextByte();

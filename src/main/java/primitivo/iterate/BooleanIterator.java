@@ -9,7 +9,7 @@ import java.util.NoSuchElementException;
 public abstract class BooleanIterator implements Iterator<Boolean> {
 	
 	/**
-	 * Returns the unboxed boolean of the value that {{@link #next()}} would have returned if it had been called instead.
+	 * Returns the unboxed boolean of the value that {@link #next()} would have returned if it had been called instead.
 	 * @return the next boolean value in the iteration.
 	 */
 	public abstract boolean nextBoolean();

@@ -9,7 +9,7 @@ import java.util.NoSuchElementException;
 public abstract class LongIterator implements Iterator<Long> {
 	
 	/**
-	 * Returns the unboxed long of the value that {{@link #next()}} would have returned if it had been called instead.
+	 * Returns the unboxed long of the value that {@link #next()} would have returned if it had been called instead.
 	 * @return the next long value in the iteration.
 	 */
 	public abstract long nextLong();

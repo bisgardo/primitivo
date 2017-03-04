@@ -9,7 +9,7 @@ import java.util.NoSuchElementException;
 public abstract class CharIterator implements Iterator<Character> {
 	
 	/**
-	 * Returns the unboxed char of the value that {{@link #next()}} would have returned if it had been called instead.
+	 * Returns the unboxed char of the value that {@link #next()} would have returned if it had been called instead.
 	 * @return the next char value in the iteration.
 	 */
 	public abstract char nextChar();

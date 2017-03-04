@@ -9,7 +9,7 @@ import java.util.NoSuchElementException;
 public abstract class FloatIterator implements Iterator<Float> {
 	
 	/**
-	 * Returns the unboxed float of the value that {{@link #next()}} would have returned if it had been called instead.
+	 * Returns the unboxed float of the value that {@link #next()} would have returned if it had been called instead.
 	 * @return the next float value in the iteration.
 	 */
 	public abstract float nextFloat();

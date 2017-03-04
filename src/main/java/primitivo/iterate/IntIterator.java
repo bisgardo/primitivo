@@ -9,7 +9,7 @@ import java.util.NoSuchElementException;
 public abstract class IntIterator implements Iterator<Integer> {
 	
 	/**
-	 * Returns the unboxed int of the value that {{@link #next()}} would have returned if it had been called instead.
+	 * Returns the unboxed int of the value that {@link #next()} would have returned if it had been called instead.
 	 * @return the next int value in the iteration.
 	 */
 	public abstract int nextInt();

@@ -9,7 +9,7 @@ import java.util.NoSuchElementException;
 public abstract class ShortIterator implements Iterator<Short> {
 	
 	/**
-	 * Returns the unboxed short of the value that {{@link #next()}} would have returned if it had been called instead.
+	 * Returns the unboxed short of the value that {@link #next()} would have returned if it had been called instead.
 	 * @return the next short value in the iteration.
 	 */
 	public abstract short nextShort();

@@ -9,7 +9,7 @@ import java.util.NoSuchElementException;
 public abstract class DoubleIterator implements Iterator<Double> {
 	
 	/**
-	 * Returns the unboxed double of the value that {{@link #next()}} would have returned if it had been called instead.
+	 * Returns the unboxed double of the value that {@link #next()} would have returned if it had been called instead.
 	 * @return the next double value in the iteration.
 	 */
 	public abstract double nextDouble();
