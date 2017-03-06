@@ -147,7 +147,7 @@ public class ObjectArray {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public static <T> T[] of(Iterator<T> iterator, Class<? super T> arrayType) {
+	public static <T> T[] of(Iterator<? extends T> iterator, Class<T> arrayType) {
 		// Target for optimization...
 		
 		if (iterator == null) {
