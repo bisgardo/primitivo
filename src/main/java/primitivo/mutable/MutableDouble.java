@@ -1,5 +1,8 @@
 package primitivo.mutable;
 
+/**
+ * @author Michael Bisgaard Olesen
+ */
 public class MutableDouble implements Comparable<MutableDouble> {
 	private double value;
 	

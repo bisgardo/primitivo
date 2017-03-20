@@ -1,5 +1,8 @@
 package primitivo.mutable;
 
+/**
+ * @author Michael Bisgaard Olesen
+ */
 public class MutableFloat implements Comparable<MutableFloat> {
 	private float value;
 	

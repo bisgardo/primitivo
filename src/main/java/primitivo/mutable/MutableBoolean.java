@@ -1,5 +1,8 @@
 package primitivo.mutable;
 
+/**
+ * @author Michael Bisgaard Olesen
+ */
 public class MutableBoolean implements Comparable<MutableBoolean> {
 	private boolean value;
 	

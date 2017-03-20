@@ -1,5 +1,8 @@
 package primitivo.mutable;
 
+/**
+ * @author Michael Bisgaard Olesen
+ */
 public class MutableInt implements Comparable<MutableInt> {
 	private int value;
 	

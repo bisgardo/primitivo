@@ -1,5 +1,8 @@
 package primitivo.mutable;
 
+/**
+ * @author Michael Bisgaard Olesen
+ */
 public class MutableObject<T> {
 	private T value;
 	

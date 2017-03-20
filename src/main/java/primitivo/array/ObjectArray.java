@@ -1,10 +1,11 @@
 package primitivo.array;
 
 import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
+/**
+ * @author Michael Bisgaard Olesen
+ */
 public class ObjectArray {
 	public static final Boolean[] EMPTY_BOOLEANS = new Boolean[0];
 	public static final Byte[] EMPTY_BYTES = new Byte[0];
@@ -17,6 +18,11 @@ public class ObjectArray {
 	
 	public static final String[] EMPTY_STRINGS = new String[0];
 	public static final Object[] EMPTY_OBJECTS = EMPTY_STRINGS;
+	
+	// Disambiguation function.
+	public static Object[] of() {
+		return EMPTY_OBJECTS;
+	}
 	
 	public static Boolean[] of(boolean... booleans) {
 		if (booleans == null) {
@@ -146,23 +152,16 @@ public class ObjectArray {
 		return objects;
 	}
 	
+	public static <T> T[] of(Iterator<? extends T> iterator, Class<T> type) {
+		return of(iterator, type, IteratorToArray.DEFAULT_EXPECTED_LENGTH);
+	}
+	
 	@SuppressWarnings("unchecked")
-	public static <T> T[] of(Iterator<? extends T> iterator, Class<T> arrayType) {
-		// Target for optimization...
-		
-		if (iterator == null) {
-			throw new NullPointerException("iterator");
+	public static <T> T[] of(Iterator<? extends T> iterator, Class<T> type, int expectedLength) {
+		Object objects = IteratorToArray.of(iterator, type, expectedLength);
+		if (objects == null) {
+			objects = Array.newInstance(type, 0);
 		}
-		if (!iterator.hasNext()) {
-			return (T[]) Array.newInstance(arrayType, 0);
-		}
-		
-		List<T> list = new ArrayList<T>();
-		do {
-			list.add(iterator.next());
-		} while (iterator.hasNext());
-		
-		T[] result = (T[]) Array.newInstance(arrayType, list.size());
-		return list.toArray(result);
+		return (T[]) objects;
 	}
 }

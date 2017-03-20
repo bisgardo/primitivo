@@ -154,11 +154,11 @@ public abstract class IntIterator implements Iterator<Integer> {
 		};
 	}
 	
-	public static IntIterator of(final int... integers) {
-		if (integers == null) {
-			throw new NullPointerException("integers");
+	public static IntIterator of(final int... ints) {
+		if (ints == null) {
+			throw new NullPointerException("ints");
 		}
-		if (integers.length == 0) {
+		if (ints.length == 0) {
 			return EMPTY;
 		}
 		return new IntIterator() {
@@ -166,7 +166,7 @@ public abstract class IntIterator implements Iterator<Integer> {
 			
 			//@Override
 			public boolean hasNext() {
-				return index < integers.length;
+				return index < ints.length;
 			}
 			
 			@Override
@@ -174,7 +174,7 @@ public abstract class IntIterator implements Iterator<Integer> {
 				if (!hasNext()) {
 					throw new NoSuchElementException();
 				}
-				return integers[index++];
+				return ints[index++];
 			}
 		};
 	}

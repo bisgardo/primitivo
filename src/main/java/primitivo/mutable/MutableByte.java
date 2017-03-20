@@ -1,5 +1,8 @@
 package primitivo.mutable;
 
+/**
+ * @author Michael Bisgaard Olesen
+ */
 public class MutableByte implements Comparable<MutableByte> {
 	private byte value;
 	
