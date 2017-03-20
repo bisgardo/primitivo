@@ -42,7 +42,7 @@ class IteratorToArray {
 	 *
 	 * <p>If the {@code expectedLength} parameter matches the number of element exactly, only a single array is allocated.
 	 *
-	 * <p>If the iterator is empty, null is returned. Delegator functions are expected to replace this value
+	 * <p>If {@code iterator} is empty, null is returned. Delegator functions are expected to replace this value
 	 * with empty arrays of the correct type.
 	 *
 	 * <p>In the future, the interface might be changed such that an object that can create and modify arrays is passed.
@@ -59,6 +59,8 @@ class IteratorToArray {
 	 *                       The method is most efficient if this value is as small an overestimate as possible.
 	 * @return An array of type {@code type} containing, in order, the exact values obtained by consuming {@code iterator}.
 	 *         If the iterator is empty, null is returned.
+	 * @throws ClassCastException If a value produced by {@code iterator} is not assignable to {@code type}.
+	 * @throws IllegalArgumentException If {@code expectedLength} is negative or if {@code type} is {@link Void#TYPE}.
 	 */
 	static Object of(Iterator<?> iterator, Class<?> type, int expectedLength) {
 		if (iterator == null) {
