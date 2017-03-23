@@ -112,6 +112,31 @@ public abstract class CharIterator implements Iterator<Character> {
 		};
 	}
 	
+	public static CharIterator of(final CharSequence charSequence) {
+		if (charSequence == null) {
+			throw new NullPointerException("charSequence");
+		}
+		
+		final int length = charSequence.length();
+		if (length == 0) {
+			return EMPTY;
+		}
+		
+		return new CharIterator() {
+			private int index = 0;
+			
+			@Override
+			public char nextChar() {
+				return charSequence.charAt(index++);
+			}
+			
+			//@Override
+			public boolean hasNext() {
+				return index < length;
+			}
+		};
+	}
+	
 	public static CharIterator range(final char from, final char to) {
 		if (from >= to) {
 			return EMPTY;

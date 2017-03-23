@@ -49,4 +49,26 @@ public class CharArray {
 		}
 		return (char[]) chars;
 	}
+	
+	public static char[] of(CharSequence charSequence) {
+		if (charSequence == null) {
+			throw new NullPointerException("charSequence");
+		}
+		
+		int length = charSequence.length();
+		if (length == 0) {
+			return EMPTY;
+		}
+		
+		if (charSequence instanceof String) {
+			return ((String) charSequence).toCharArray();
+		}
+		
+		char[] chars = new char[length];
+		for (int index = 0; index < length; index++) {
+			chars[index] = charSequence.charAt(index);
+		}
+		
+		return chars;
+	}
 }
