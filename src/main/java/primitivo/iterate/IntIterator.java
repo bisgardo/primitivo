@@ -4,18 +4,26 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
+ * Iterator of unboxed {@code int} values.
+ *
  * @author Michael Bisgaard Olesen
+ *
+ * @see primitivo.iterate
  */
 public abstract class IntIterator implements Iterator<Integer> {
 	
 	/**
-	 * Returns the unboxed int of the value that {@link #next()} would have returned if it had been called instead.
-	 * @return the next int value in the iteration.
+	 * Returns the unboxed {@code int} of the value that
+	 * {@link #next()} would have returned
+	 * if it had been called instead.
+	 *
+	 * @return The next {@code int} value in the iteration.
 	 */
 	public abstract int nextInt();
 	
 	/**
-	 * @return the next Integer value in the iteration. This value is never null.
+	 * @return The next {@link Integer} value in the iteration.
+	 *         This value is never null.
 	 */
 	//@Override
 	public Integer next() {
@@ -122,6 +130,9 @@ public abstract class IntIterator implements Iterator<Integer> {
 		}
 		if (!iterator.hasNext()) {
 			return EMPTY;
+		}
+		if (iterator instanceof IntIterator) {
+			return (IntIterator) iterator;
 		}
 		return new IntIterator() {
 			//@Override

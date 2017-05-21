@@ -4,18 +4,26 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
+ * Iterator of unboxed {@code long} values.
+ *
  * @author Michael Bisgaard Olesen
+ *
+ * @see primitivo.iterate
  */
 public abstract class LongIterator implements Iterator<Long> {
 	
 	/**
-	 * Returns the unboxed long of the value that {@link #next()} would have returned if it had been called instead.
-	 * @return the next long value in the iteration.
+	 * Returns the unboxed {@code long} of the value that
+	 * {@link #next()} would have returned
+	 * if it had been called instead.
+	 *
+	 * @return The next {@code long} value in the iteration.
 	 */
 	public abstract long nextLong();
 	
 	/**
-	 * @return the next Long value in the iteration. This value is never null.
+	 * @return The next {@link Long} value in the iteration.
+	 *         This value is never null.
 	 */
 	//@Override
 	public Long next() {
@@ -143,6 +151,9 @@ public abstract class LongIterator implements Iterator<Long> {
 		}
 		if (!iterator.hasNext()) {
 			return EMPTY;
+		}
+		if (iterator instanceof LongIterator) {
+			return (LongIterator) iterator;
 		}
 		return new LongIterator() {
 			//@Override

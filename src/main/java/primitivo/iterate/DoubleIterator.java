@@ -4,18 +4,26 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
+ * Iterator of unboxed {@code double} values.
+ *
  * @author Michael Bisgaard Olesen
+ *
+ * @see primitivo.iterate
  */
 public abstract class DoubleIterator implements Iterator<Double> {
 	
 	/**
-	 * Returns the unboxed double of the value that {@link #next()} would have returned if it had been called instead.
-	 * @return the next double value in the iteration.
+	 * Returns the unboxed {@code double} of the value that
+	 * {@link #next()} would have returned
+	 * if it had been called instead.
+	 *
+	 * @return The next {@code double} value in the iteration.
 	 */
 	public abstract double nextDouble();
 	
 	/**
-	 * @return the next Double value in the iteration. This value is never null.
+	 * @return The next {@link Double} value in the iteration.
+	 *         This value is never null.
 	 */
 	//@Override
 	public Double next() {
@@ -187,6 +195,9 @@ public abstract class DoubleIterator implements Iterator<Double> {
 		}
 		if (!iterator.hasNext()) {
 			return EMPTY;
+		}
+		if (iterator instanceof DoubleIterator) {
+			return (DoubleIterator) iterator;
 		}
 		return new DoubleIterator() {
 			//@Override

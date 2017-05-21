@@ -1,7 +1,12 @@
 package primitivo.mutable;
 
 /**
+ * A mutable wrapper of a nullable reference of the
+ * unbounded generic type {@code T}.
+ *
  * @author Michael Bisgaard Olesen
+ *
+ * @see primitivo.mutable
  */
 public class MutableObject<T> {
 	private T value;

@@ -1,8 +1,19 @@
 package primitivo.mutable;
 
 /**
+ * Mutable wrapper of a {@code float} value.
+ * Provides a mutable alternative to {@link Float}.
+ * <p>
+ * By design, this class is not a subtype of
+ * {@link MutableObject MutableObject&lt;Float&gt;},
+ * but it may be converted into this type
+ * using {@link MutableObject#of(MutableFloat)}.
+ *
  * @author Michael Bisgaard Olesen
+ *
+ * @see primitivo.mutable
  */
+
 public class MutableFloat implements Comparable<MutableFloat> {
 	private float value;
 	

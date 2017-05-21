@@ -4,18 +4,26 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
+ * Iterator of unboxed {@code byte} values.
+ *
  * @author Michael Bisgaard Olesen
+ *
+ * @see primitivo.iterate
  */
 public abstract class ByteIterator implements Iterator<Byte> {
 	
 	/**
-	 * Returns the unboxed byte of the value that {@link #next()} would have returned if it had been called instead.
-	 * @return the next byte value in the iteration.
+	 * Returns the unboxed {@code byte} of the value that
+	 * {@link #next()} would have returned
+	 * if it had been called instead.
+	 *
+	 * @return The next {@code byte} value in the iteration.
 	 */
 	public abstract byte nextByte();
 	
 	/**
-	 * @return the next Byte value in the iteration. This value is never null.
+	 * @return The next {@link Byte} value in the iteration.
+	 *         This value is never null.
 	 */
 	//@Override
 	public Byte next() {
@@ -55,6 +63,9 @@ public abstract class ByteIterator implements Iterator<Byte> {
 		}
 		if (!iterator.hasNext()) {
 			return EMPTY;
+		}
+		if (iterator instanceof ByteIterator) {
+			return (ByteIterator) iterator;
 		}
 		return new ByteIterator() {
 			//@Override

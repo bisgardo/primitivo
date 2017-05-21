@@ -1,8 +1,19 @@
 package primitivo.mutable;
 
 /**
+ * Mutable wrapper of a {@code long} value.
+ * Provides a mutable alternative to {@link Long}.
+ * <p>
+ * By design, this class is not a subtype of
+ * {@link MutableObject MutableObject&lt;Long&gt;},
+ * but it may be converted into this type
+ * using {@link MutableObject#of(MutableLong)}.
+ *
  * @author Michael Bisgaard Olesen
+ *
+ * @see primitivo.mutable
  */
+
 public class MutableLong implements Comparable<MutableLong> {
 	private long value;
 	
@@ -69,11 +80,8 @@ public class MutableLong implements Comparable<MutableLong> {
 		long otherValue = other.value;
 		if (value < otherValue) {
 			return -1;
-		} else if (value == otherValue) {
-			return 0;
-		} else {
-			return 1;
 		}
+		return value == otherValue ? 0 : 1;
 	}
 	
 	@Override

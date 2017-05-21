@@ -4,18 +4,26 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
+ * Iterator of unboxed {@code char} values.
+ *
  * @author Michael Bisgaard Olesen
+ *
+ * @see primitivo.iterate
  */
 public abstract class CharIterator implements Iterator<Character> {
 	
 	/**
-	 * Returns the unboxed char of the value that {@link #next()} would have returned if it had been called instead.
-	 * @return the next char value in the iteration.
+	 * Returns the unboxed {@code char} of the value that
+	 * {@link #next()} would have returned
+	 * if it had been called instead.
+	 *
+	 * @return The next {@code char} value in the iteration.
 	 */
 	public abstract char nextChar();
 	
 	/**
-	 * @return the next Character value in the iteration. This value is never null.
+	 * @return The next {@link Character} value in the iteration.
+	 *         This value is never null.
 	 */
 	//@Override
 	public Character next() {
@@ -55,6 +63,9 @@ public abstract class CharIterator implements Iterator<Character> {
 		}
 		if (!iterator.hasNext()) {
 			return EMPTY;
+		}
+		if (iterator instanceof CharIterator) {
+			return (CharIterator) iterator;
 		}
 		return new CharIterator() {
 			//@Override

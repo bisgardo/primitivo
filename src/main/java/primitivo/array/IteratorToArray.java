@@ -4,10 +4,11 @@ import java.lang.reflect.Array;
 import java.util.Iterator;
 
 /**
- * <p>Container class of an efficient function for converting generic iterators into arrays.
- *
- * <p>In the implementation of the methods of this class, arrays are thought of as lists with a dynamic size
- * (tracked in separate variables) limited by the array's length.
+ * Container class of an efficient function for converting generic iterators into arrays.
+ * <p>
+ * In the implementation of the methods of this class,
+ * arrays are thought of as lists with a dynamic size
+ * (tracked in separate variables) which is limited by the array's length.
  *
  * @author Michael Bisgaard Olesen.
  */
@@ -15,7 +16,8 @@ class IteratorToArray {
 	/**
 	 * Default expected (maximum) length of arrays produced by {@link #of(Iterator, Class, int)}.
 	 * Is used by delegating functions when no reasonable guess is available.
-	 * This constant is defined centrally here instead of all delegators defining their own defaults or magic constants.
+	 * This constant is defined centrally here such that delegators don't need to
+	 * define their own defaults or magic constants.
 	 */
 	static final int DEFAULT_EXPECTED_LENGTH = 16;
 	
@@ -30,37 +32,46 @@ class IteratorToArray {
 	}
 	
 	/**
-	 * <p>Efficient function for converting generic iterators into arrays.
+	 * Efficient function for converting generic iterators into arrays.
 	 * The array may be of primitive type, which makes it impossible to generify the function
 	 * (in its current form - see below);
 	 * {@link Object} is the only type that can represent all arrays.
 	 * This is also the reason why the class and function is not public.
-	 * Instead, type-safe delegator functions are contained in the classes in the {@link primitivo.array} package.
-	 *
-	 * <p>The function works by copying the consumed elements one at a time into a chain of arrays of increasing length.
-	 * These arrays are then merged once in the end, thus minimizing the number of times elements are copied.
-	 *
-	 * <p>If the {@code expectedLength} parameter matches the number of element exactly, only a single array is allocated.
-	 *
-	 * <p>If {@code iterator} is empty, null is returned. Delegator functions are expected to replace this value
-	 * with empty arrays of the correct type.
-	 *
-	 * <p>In the future, the interface might be changed such that an object that can create and modify arrays is passed.
+	 * Instead, type-safe delegator functions are contained in the classes
+	 * in the {@link primitivo.array} package.
+	 * <p>
+	 * The function works by copying the consumed elements one at a time
+	 * into a chain of arrays of increasing length.
+	 * These arrays are merged once in the end; thus minimizing
+	 * the number of times that elements are copied.
+	 * <p>
+	 * If the {@code expectedLength} parameter matches the number of element exactly,
+	 * only a single array is allocated.
+	 * <p>
+	 * If {@code iterator} is empty, null is returned.
+	 * Delegator functions are expected to replace this value
+	 * with an empty array of the correct type.
+	 * <p>
+	 * In the future, the interface might be changed such that
+	 * an object that can create and modify arrays is passed.
 	 * Other than eliminating reflection (which could actually turn out to be very efficient),
-	 * this would allow the method to be properly generified and prevent autoboxing of primitive types
-	 * (though they currently do happen in such a way that the JIT should be able to optimize them away if the method is
-	 * inlined).
+	 * this would allow the method to be properly generified
+	 * and prevent autoboxing of primitive types
+	 * (though they currently do happen in such a way that the JIT should be able to
+	 * optimize them away if the method is inlined).
 	 *
-	 * @param iterator Iterator to consume into an array.
+	 * @param iterator Iterator producing values that are assignable to {@code type}.
 	 * @param type The type of the produced array.
-	 *             The type must be compatible with the types of the values produced by the iterator.
-	 *
 	 * @param expectedLength The expected number of elements to be consumed from the iterator.
-	 *                       The method is most efficient if this value is as small an overestimate as possible.
-	 * @return An array of type {@code type} containing, in order, the exact values obtained by consuming {@code iterator}.
+	 *                       The function is most efficient if this value is
+	 *                       as small an overestimate as possible.
+	 * @return An array of type {@code type} containing, in order,
+	 *         the exact values obtained by consuming {@code iterator}.
 	 *         If the iterator is empty, null is returned.
-	 * @throws ClassCastException If a value produced by {@code iterator} is not assignable to {@code type}.
-	 * @throws IllegalArgumentException If {@code expectedLength} is negative or if {@code type} is {@link Void#TYPE}.
+	 * @throws ClassCastException If a value produced by {@code iterator}
+	 *                            is not assignable to {@code type}.
+	 * @throws IllegalArgumentException If {@code expectedLength} is negative
+	 *                                  or if {@code type} is {@link Void#TYPE}.
 	 */
 	static Object of(Iterator<?> iterator, Class<?> type, int expectedLength) {
 		if (iterator == null) {
@@ -91,7 +102,8 @@ class IteratorToArray {
 				// Store the current array as the next prefix.
 				prefixArrays = new Prefix(prefixArrays, array);
 				
-				// Allocate new array of the same size as the current number of elements and (lazy-)update length and size.
+				// Allocate new array of the same size as the current number of elements
+				// and (lazy-)update length and size.
 				resultLength += arraySize;
 				array = Array.newInstance(type, resultLength);
 				arrayLength = resultLength;
@@ -117,9 +129,10 @@ class IteratorToArray {
 	}
 	
 	/**
-	 * <p>Helper method for iteratively joining a number of arrays into a single array.
-	 *
-	 * <p>Due to reliance on a number of unchecked preconditions being met, this method should stay private.
+	 * Helper method for iteratively joining a number of arrays into a single array.
+	 * <p>
+	 * Due to reliance on a number of unchecked preconditions being met,
+	 * this method should stay private.
 	 *
 	 * @param prefixArrays A singly-linked list of prefix arrays.
 	 * @param suffixArray A suffix array.

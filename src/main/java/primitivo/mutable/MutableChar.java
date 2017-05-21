@@ -1,8 +1,19 @@
 package primitivo.mutable;
 
 /**
+ * Mutable wrapper of a {@code char} value.
+ * Provides a mutable alternative to {@link Character}.
+ * <p>
+ * By design, this class is not a subtype of
+ * {@link MutableObject MutableObject&lt;Character&gt;},
+ * but it may be converted into this type
+ * using {@link MutableObject#of(MutableChar)}.
+ *
  * @author Michael Bisgaard Olesen
+ *
+ * @see primitivo.mutable
  */
+
 public class MutableChar implements Comparable<MutableChar> {
 	private char value;
 	

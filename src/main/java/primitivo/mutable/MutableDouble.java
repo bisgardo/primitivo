@@ -1,8 +1,19 @@
 package primitivo.mutable;
 
 /**
+ * Mutable wrapper of a {@code double} value.
+ * Provides a mutable alternative to {@link Double}.
+ * <p>
+ * By design, this class is not a subtype of
+ * {@link MutableObject MutableObject&lt;Double&gt;},
+ * but it may be converted into this type
+ * using {@link MutableObject#of(MutableDouble)}.
+ *
  * @author Michael Bisgaard Olesen
+ *
+ * @see primitivo.mutable
  */
+
 public class MutableDouble implements Comparable<MutableDouble> {
 	private double value;
 	

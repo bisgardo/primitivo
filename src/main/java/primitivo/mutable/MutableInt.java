@@ -1,8 +1,19 @@
 package primitivo.mutable;
 
 /**
+ * Mutable wrapper of a {@code int} value.
+ * Provides a mutable alternative to {@link Integer}.
+ * <p>
+ * By design, this class is not a subtype of
+ * {@link MutableObject MutableObject&lt;Integer&gt;},
+ * but it may be converted into this type
+ * using {@link MutableObject#of(MutableInt)}.
+ *
  * @author Michael Bisgaard Olesen
+ *
+ * @see primitivo.mutable
  */
+
 public class MutableInt implements Comparable<MutableInt> {
 	private int value;
 	
@@ -69,11 +80,8 @@ public class MutableInt implements Comparable<MutableInt> {
 		int otherValue = other.value;
 		if (value < otherValue) {
 			return -1;
-		} else if (value == otherValue) {
-			return 0;
-		} else {
-			return 1;
 		}
+		return value == otherValue ? 0 : 1;
 	}
 	
 	@Override

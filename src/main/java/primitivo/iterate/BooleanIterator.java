@@ -4,18 +4,26 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
+ * Iterator of unboxed {@code boolean} values.
+ *
  * @author Michael Bisgaard Olesen
+ *
+ * @see primitivo.iterate
  */
 public abstract class BooleanIterator implements Iterator<Boolean> {
 	
 	/**
-	 * Returns the unboxed boolean of the value that {@link #next()} would have returned if it had been called instead.
-	 * @return the next boolean value in the iteration.
+	 * Returns the unboxed {@code boolean} of the value that
+	 * {@link #next()} would have returned
+	 * if it had been called instead.
+	 *
+	 * @return The next {@code boolean} value in the iteration.
 	 */
 	public abstract boolean nextBoolean();
 	
 	/**
-	 * @return the next Boolean value in the iteration. This value is never null.
+	 * @return The next {@link Boolean} value in the iteration.
+	 *         This value is never null.
 	 */
 	//@Override
 	public Boolean next() {
@@ -55,6 +63,9 @@ public abstract class BooleanIterator implements Iterator<Boolean> {
 		}
 		if (!iterator.hasNext()) {
 			return EMPTY;
+		}
+		if (iterator instanceof BooleanIterator) {
+			return (BooleanIterator) iterator;
 		}
 		return new BooleanIterator() {
 			//@Override

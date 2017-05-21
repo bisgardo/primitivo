@@ -1,7 +1,17 @@
 package primitivo.mutable;
 
 /**
+ * Mutable wrapper of a {@code boolean} value.
+ * Provides a mutable alternative to {@link Boolean}.
+ * <p>
+ * By design, this class is not a subtype of
+ * {@link MutableObject MutableObject&lt;Boolean&gt;},
+ * but it may be converted into this type
+ * using {@link MutableObject#of(MutableBoolean)}.
+ *
  * @author Michael Bisgaard Olesen
+ *
+ * @see primitivo.mutable
  */
 public class MutableBoolean implements Comparable<MutableBoolean> {
 	private boolean value;
@@ -58,13 +68,11 @@ public class MutableBoolean implements Comparable<MutableBoolean> {
 	
 	//@Override
 	public int compareTo(MutableBoolean other) {
-		if (value == other.value) {
-			return 0;
-		} else if (value) {
-			return 1;
+		if (value) {
+			return other.value ? 0 : 1;
 		} else {
-			return -1;
-		} 
+			return other.value ? -1 : 0;
+		}
 	}
 	
 	@Override

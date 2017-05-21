@@ -4,18 +4,26 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
+ * Iterator of unboxed {@code short} values.
+ *
  * @author Michael Bisgaard Olesen
+ *
+ * @see primitivo.iterate
  */
 public abstract class ShortIterator implements Iterator<Short> {
 	
 	/**
-	 * Returns the unboxed short of the value that {@link #next()} would have returned if it had been called instead.
-	 * @return the next short value in the iteration.
+	 * Returns the unboxed {@code short} of the value that
+	 * {@link #next()} would have returned
+	 * if it had been called instead.
+	 *
+	 * @return The next {@code short} value in the iteration.
 	 */
 	public abstract short nextShort();
 	
 	/**
-	 * @return the next Short value in the iteration. This value is never null.
+	 * @return The next {@link Short} value in the iteration.
+	 *         This value is never null.
 	 */
 	//@Override
 	public Short next() {
@@ -77,6 +85,9 @@ public abstract class ShortIterator implements Iterator<Short> {
 		}
 		if (!iterator.hasNext()) {
 			return EMPTY;
+		}
+		if (iterator instanceof ShortIterator) {
+			return (ShortIterator) iterator;
 		}
 		return new ShortIterator() {
 			//@Override

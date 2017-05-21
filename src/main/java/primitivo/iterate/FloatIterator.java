@@ -4,18 +4,26 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
+ * Iterator of unboxed {@code float} values.
+ *
  * @author Michael Bisgaard Olesen
+ *
+ * @see primitivo.iterate
  */
 public abstract class FloatIterator implements Iterator<Float> {
 	
 	/**
-	 * Returns the unboxed float of the value that {@link #next()} would have returned if it had been called instead.
-	 * @return the next float value in the iteration.
+	 * Returns the unboxed {@code float} of the value that
+	 * {@link #next()} would have returned
+	 * if it had been called instead.
+	 *
+	 * @return The next {@code float} value in the iteration.
 	 */
 	public abstract float nextFloat();
 	
 	/**
-	 * @return the next Float value in the iteration. This value is never null.
+	 * @return The next {@link Float} value in the iteration.
+	 *         This value is never null.
 	 */
 	//@Override
 	public Float next() {
@@ -143,6 +151,9 @@ public abstract class FloatIterator implements Iterator<Float> {
 		}
 		if (!iterator.hasNext()) {
 			return EMPTY;
+		}
+		if (iterator instanceof FloatIterator) {
+			return (FloatIterator) iterator;
 		}
 		return new FloatIterator() {
 			//@Override

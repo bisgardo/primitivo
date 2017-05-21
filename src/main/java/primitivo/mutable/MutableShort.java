@@ -1,8 +1,19 @@
 package primitivo.mutable;
 
 /**
+ * Mutable wrapper of a {@code short} value.
+ * Provides a mutable alternative to {@link Short}.
+ * <p>
+ * By design, this class is not a subtype of
+ * {@link MutableObject MutableObject&lt;Short&gt;},
+ * but it may be converted into this type
+ * using {@link MutableObject#of(MutableShort)}.
+ *
  * @author Michael Bisgaard Olesen
+ *
+ * @see primitivo.mutable
  */
+
 public class MutableShort implements Comparable<MutableShort> {
 	private short value;
 	

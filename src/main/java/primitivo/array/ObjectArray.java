@@ -17,7 +17,7 @@ public class ObjectArray {
 	public static final Double[] EMPTY_DOUBLES = new Double[0];
 	
 	public static final String[] EMPTY_STRINGS = new String[0];
-	public static final Object[] EMPTY_OBJECTS = EMPTY_STRINGS;
+	public static final Object[] EMPTY_OBJECTS = new Object[0];
 	
 	// Disambiguation function.
 	public static Object[] of() {

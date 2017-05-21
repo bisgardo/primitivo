@@ -3,6 +3,13 @@ package primitivo.iterate;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+/**
+ * Utility class for constructing generic iterators.
+ *
+ * @author Michael Bisgaard Olesen
+ *
+ * @see primitivo.iterate
+ */
 public class ObjectIterator {
 	
 	public static final Iterator<?> EMPTY = new Iterator<Object>() {

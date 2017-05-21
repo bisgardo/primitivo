@@ -1,8 +1,19 @@
 package primitivo.mutable;
 
 /**
+ * Mutable wrapper of a {@code byte} value.
+ * Provides a mutable alternative to {@link Byte}.
+ * <p>
+ * By design, this class is not a subtype of
+ * {@link MutableObject MutableObject&lt;Byte&gt;},
+ * but it may be converted into this type
+ * using {@link MutableObject#of(MutableByte)}.
+ *
  * @author Michael Bisgaard Olesen
+ *
+ * @see primitivo.mutable
  */
+
 public class MutableByte implements Comparable<MutableByte> {
 	private byte value;
 	
