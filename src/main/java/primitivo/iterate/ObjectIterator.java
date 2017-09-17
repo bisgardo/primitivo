@@ -34,6 +34,31 @@ public class ObjectIterator {
 		return (Iterator<T>) EMPTY;
 	}
 	
+	public static <T> Iterator<T> of(final T value) {
+		return new Iterator<T>() {
+			private boolean hasNext = true;
+			
+			//@Override
+			public boolean hasNext() {
+				return hasNext;
+			}
+			
+			//@Override
+			public T next() {
+				if (!hasNext()) {
+					throw new NoSuchElementException();
+				}
+				hasNext = false;
+				return value;
+			}
+			
+			//@Override
+			public void remove() {
+				throw new UnsupportedOperationException();
+			}
+		};
+	}
+	
 	//@SafeVarargs
 	public static <T> Iterator<T> of(final T... objects) {
 		if (objects == null) {

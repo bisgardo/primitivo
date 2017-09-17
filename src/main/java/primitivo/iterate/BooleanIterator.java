@@ -98,6 +98,26 @@ public abstract class BooleanIterator implements Iterator<Boolean> {
 		};
 	}
 	
+	public static BooleanIterator of(final boolean value) {
+		return new BooleanIterator() {
+			private boolean hasNext = true;
+			
+			//@Override
+			public boolean hasNext() {
+				return hasNext;
+			}
+			
+			@Override
+			public boolean nextBoolean() {
+				if (!hasNext()) {
+					throw new NoSuchElementException();
+				}
+				hasNext = false;
+				return value;
+			}
+		};
+	}
+	
 	public static BooleanIterator of(final boolean... booleans) {
 		if (booleans == null) {
 			throw new NullPointerException("booleans");

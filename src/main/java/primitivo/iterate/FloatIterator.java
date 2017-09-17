@@ -186,6 +186,26 @@ public abstract class FloatIterator implements Iterator<Float> {
 		};
 	}
 	
+	public static FloatIterator of(final float value) {
+		return new FloatIterator() {
+			private boolean hasNext = true;
+			
+			//@Override
+			public boolean hasNext() {
+				return hasNext;
+			}
+			
+			@Override
+			public float nextFloat() {
+				if (!hasNext()) {
+					throw new NoSuchElementException();
+				}
+				hasNext = false;
+				return value;
+			}
+		};
+	}
+	
 	public static FloatIterator of(final float... floats) {
 		if (floats == null) {
 			throw new NullPointerException("floats");

@@ -186,6 +186,26 @@ public abstract class LongIterator implements Iterator<Long> {
 		};
 	}
 	
+	public static LongIterator of(final long value) {
+		return new LongIterator() {
+			private boolean hasNext = true;
+			
+			//@Override
+			public boolean hasNext() {
+				return hasNext;
+			}
+			
+			@Override
+			public long nextLong() {
+				if (!hasNext()) {
+					throw new NoSuchElementException();
+				}
+				hasNext = false;
+				return value;
+			}
+		};
+	}
+	
 	public static LongIterator of(final long... longs) {
 		if (longs == null) {
 			throw new NullPointerException("longs");

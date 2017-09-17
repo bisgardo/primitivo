@@ -165,6 +165,26 @@ public abstract class IntIterator implements Iterator<Integer> {
 		};
 	}
 	
+	public static IntIterator of(final int value) {
+		return new IntIterator() {
+			private boolean hasNext = true;
+			
+			//@Override
+			public boolean hasNext() {
+				return hasNext;
+			}
+			
+			@Override
+			public int nextInt() {
+				if (!hasNext()) {
+					throw new NoSuchElementException();
+				}
+				hasNext = false;
+				return value;
+			}
+		};
+	}
+	
 	public static IntIterator of(final int... ints) {
 		if (ints == null) {
 			throw new NullPointerException("ints");

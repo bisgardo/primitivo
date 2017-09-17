@@ -98,6 +98,26 @@ public abstract class CharIterator implements Iterator<Character> {
 		};
 	}
 	
+	public static CharIterator of(final char value) {
+		return new CharIterator() {
+			private boolean hasNext = true;
+			
+			//@Override
+			public boolean hasNext() {
+				return hasNext;
+			}
+			
+			@Override
+			public char nextChar() {
+				if (!hasNext()) {
+					throw new NoSuchElementException();
+				}
+				hasNext = false;
+				return value;
+			}
+		};
+	}
+	
 	public static CharIterator of(final char... chars) {
 		if (chars == null) {
 			throw new NullPointerException("chars");

@@ -230,6 +230,26 @@ public abstract class DoubleIterator implements Iterator<Double> {
 		};
 	}
 	
+	public static DoubleIterator of(final double value) {
+		return new DoubleIterator() {
+			private boolean hasNext = true;
+			
+			//@Override
+			public boolean hasNext() {
+				return hasNext;
+			}
+			
+			@Override
+			public double nextDouble() {
+				if (!hasNext()) {
+					throw new NoSuchElementException();
+				}
+				hasNext = false;
+				return value;
+			}
+		};
+	}
+	
 	public static DoubleIterator of(final double... doubles) {
 		if (doubles == null) {
 			throw new NullPointerException("doubles");
