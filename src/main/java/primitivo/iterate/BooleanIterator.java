@@ -118,11 +118,11 @@ public abstract class BooleanIterator implements Iterator<Boolean> {
 		};
 	}
 	
-	public static BooleanIterator of(final boolean... booleans) {
-		if (booleans == null) {
-			throw new NullPointerException("booleans");
+	public static BooleanIterator of(final boolean... values) {
+		if (values == null) {
+			throw new NullPointerException("values");
 		}
-		if (booleans.length == 0) {
+		if (values.length == 0) {
 			return EMPTY;
 		}
 		return new BooleanIterator() {
@@ -130,7 +130,7 @@ public abstract class BooleanIterator implements Iterator<Boolean> {
 			
 			//@Override
 			public boolean hasNext() {
-				return index < booleans.length;
+				return index < values.length;
 			}
 			
 			@Override
@@ -138,7 +138,7 @@ public abstract class BooleanIterator implements Iterator<Boolean> {
 				if (!hasNext()) {
 					throw new NoSuchElementException();
 				}
-				return booleans[index++];
+				return values[index++];
 			}
 		};
 	}

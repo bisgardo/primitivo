@@ -206,11 +206,11 @@ public abstract class LongIterator implements Iterator<Long> {
 		};
 	}
 	
-	public static LongIterator of(final long... longs) {
-		if (longs == null) {
-			throw new NullPointerException("longs");
+	public static LongIterator of(final long... values) {
+		if (values == null) {
+			throw new NullPointerException("values");
 		}
-		if (longs.length == 0) {
+		if (values.length == 0) {
 			return EMPTY;
 		}
 		return new LongIterator() {
@@ -218,7 +218,7 @@ public abstract class LongIterator implements Iterator<Long> {
 			
 			//@Override
 			public boolean hasNext() {
-				return index < longs.length;
+				return index < values.length;
 			}
 			
 			@Override
@@ -226,7 +226,7 @@ public abstract class LongIterator implements Iterator<Long> {
 				if (!hasNext()) {
 					throw new NoSuchElementException();
 				}
-				return longs[index++];
+				return values[index++];
 			}
 		};
 	}

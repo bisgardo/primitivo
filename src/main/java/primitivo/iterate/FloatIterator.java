@@ -206,11 +206,11 @@ public abstract class FloatIterator implements Iterator<Float> {
 		};
 	}
 	
-	public static FloatIterator of(final float... floats) {
-		if (floats == null) {
-			throw new NullPointerException("floats");
+	public static FloatIterator of(final float... values) {
+		if (values == null) {
+			throw new NullPointerException("values");
 		}
-		if (floats.length == 0) {
+		if (values.length == 0) {
 			return EMPTY;
 		}
 		return new FloatIterator() {
@@ -218,7 +218,7 @@ public abstract class FloatIterator implements Iterator<Float> {
 			
 			//@Override
 			public boolean hasNext() {
-				return index < floats.length;
+				return index < values.length;
 			}
 			
 			@Override
@@ -226,7 +226,7 @@ public abstract class FloatIterator implements Iterator<Float> {
 				if (!hasNext()) {
 					throw new NoSuchElementException();
 				}
-				return floats[index++];
+				return values[index++];
 			}
 		};
 	}

@@ -60,11 +60,11 @@ public class ObjectIterator {
 	}
 	
 	//@SafeVarargs
-	public static <T> Iterator<T> of(final T... objects) {
-		if (objects == null) {
-			throw new NullPointerException("objects");
+	public static <T> Iterator<T> of(final T... values) {
+		if (values == null) {
+			throw new NullPointerException("values");
 		}
-		if (objects.length == 0) {
+		if (values.length == 0) {
 			return of();
 		}
 		return new Iterator<T>() {
@@ -72,7 +72,7 @@ public class ObjectIterator {
 			
 			//@Override
 			public boolean hasNext() {
-				return index < objects.length;
+				return index < values.length;
 			}
 			
 			//@Override
@@ -80,7 +80,7 @@ public class ObjectIterator {
 				if (!hasNext()) {
 					throw new NoSuchElementException();
 				}
-				return objects[index++];
+				return values[index++];
 			}
 			
 			public void remove() {

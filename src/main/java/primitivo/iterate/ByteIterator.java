@@ -118,11 +118,11 @@ public abstract class ByteIterator implements Iterator<Byte> {
 		};
 	}
 	
-	public static ByteIterator of(final byte... bytes) {
-		if (bytes == null) {
-			throw new NullPointerException("bytes");
+	public static ByteIterator of(final byte... values) {
+		if (values == null) {
+			throw new NullPointerException("values");
 		}
-		if (bytes.length == 0) {
+		if (values.length == 0) {
 			return EMPTY;
 		}
 		return new ByteIterator() {
@@ -130,7 +130,7 @@ public abstract class ByteIterator implements Iterator<Byte> {
 			
 			//@Override
 			public boolean hasNext() {
-				return index < bytes.length;
+				return index < values.length;
 			}
 			
 			@Override
@@ -138,7 +138,7 @@ public abstract class ByteIterator implements Iterator<Byte> {
 				if (!hasNext()) {
 					throw new NoSuchElementException();
 				}
-				return bytes[index++];
+				return values[index++];
 			}
 		};
 	}

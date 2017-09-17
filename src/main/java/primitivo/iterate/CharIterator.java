@@ -118,11 +118,11 @@ public abstract class CharIterator implements Iterator<Character> {
 		};
 	}
 	
-	public static CharIterator of(final char... chars) {
-		if (chars == null) {
-			throw new NullPointerException("chars");
+	public static CharIterator of(final char... values) {
+		if (values == null) {
+			throw new NullPointerException("values");
 		}
-		if (chars.length == 0) {
+		if (values.length == 0) {
 			return EMPTY;
 		}
 		return new CharIterator() {
@@ -130,7 +130,7 @@ public abstract class CharIterator implements Iterator<Character> {
 			
 			//@Override
 			public boolean hasNext() {
-				return index < chars.length;
+				return index < values.length;
 			}
 			
 			@Override
@@ -138,7 +138,7 @@ public abstract class CharIterator implements Iterator<Character> {
 				if (!hasNext()) {
 					throw new NoSuchElementException();
 				}
-				return chars[index++];
+				return values[index++];
 			}
 		};
 	}

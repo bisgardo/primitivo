@@ -250,11 +250,11 @@ public abstract class DoubleIterator implements Iterator<Double> {
 		};
 	}
 	
-	public static DoubleIterator of(final double... doubles) {
-		if (doubles == null) {
-			throw new NullPointerException("doubles");
+	public static DoubleIterator of(final double... values) {
+		if (values == null) {
+			throw new NullPointerException("values");
 		}
-		if (doubles.length == 0) {
+		if (values.length == 0) {
 			return EMPTY;
 		}
 		return new DoubleIterator() {
@@ -262,7 +262,7 @@ public abstract class DoubleIterator implements Iterator<Double> {
 			
 			//@Override
 			public boolean hasNext() {
-				return index < doubles.length;
+				return index < values.length;
 			}
 			
 			@Override
@@ -270,7 +270,7 @@ public abstract class DoubleIterator implements Iterator<Double> {
 				if (!hasNext()) {
 					throw new NoSuchElementException();
 				}
-				return doubles[index++];
+				return values[index++];
 			}
 		};
 	}

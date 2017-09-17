@@ -140,11 +140,11 @@ public abstract class ShortIterator implements Iterator<Short> {
 		};
 	}
 	
-	public static ShortIterator of(final short... shorts) {
-		if (shorts == null) {
-			throw new NullPointerException("shorts");
+	public static ShortIterator of(final short... values) {
+		if (values == null) {
+			throw new NullPointerException("values");
 		}
-		if (shorts.length == 0) {
+		if (values.length == 0) {
 			return EMPTY;
 		}
 		return new ShortIterator() {
@@ -152,7 +152,7 @@ public abstract class ShortIterator implements Iterator<Short> {
 			
 			//@Override
 			public boolean hasNext() {
-				return index < shorts.length;
+				return index < values.length;
 			}
 			
 			@Override
@@ -160,7 +160,7 @@ public abstract class ShortIterator implements Iterator<Short> {
 				if (!hasNext()) {
 					throw new NoSuchElementException();
 				}
-				return shorts[index++];
+				return values[index++];
 			}
 		};
 	}
