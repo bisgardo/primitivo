@@ -57,6 +57,22 @@ public class MutableShort implements Comparable<MutableShort> {
 		value--;
 	}
 	
+	public void negate() {
+		value = (short) ~value;
+	}
+	
+	public void and(short value) {
+		this.value &= value;
+	}
+	
+	public void or(short value) {
+		this.value |= value;
+	}
+	
+	public void xor(short value) {
+		this.value ^= value;
+	}
+	
 	@Override
 	public boolean equals(Object object) {
 		if (this == object) {

@@ -57,6 +57,22 @@ public class MutableInt implements Comparable<MutableInt> {
 		value--;
 	}
 	
+	public void negate() {
+		value = ~value;
+	}
+	
+	public void and(int value) {
+		this.value &= value;
+	}
+	
+	public void or(int value) {
+		this.value |= value;
+	}
+	
+	public void xor(int value) {
+		this.value ^= value;
+	}
+	
 	@Override
 	public boolean equals(Object object) {
 		if (this == object) {

@@ -41,6 +41,38 @@ public class MutableChar implements Comparable<MutableChar> {
 		value--;
 	}
 	
+	public void add(char value) {
+		this.value += value;
+	}
+	
+	public void subtract(char value) {
+		this.value -= value;
+	}
+	
+	public void multiply(char value) {
+		this.value *= value;
+	}
+	
+	public void divide(char value) {
+		this.value /= value;
+	}
+	
+	public void negate() {
+		value = (char) ~value;
+	}
+	
+	public void and(char value) {
+		this.value &= value;
+	}
+	
+	public void or(char value) {
+		this.value |= value;
+	}
+	
+	public void xor(char value) {
+		this.value ^= value;
+	}
+	
 	@Override
 	public boolean equals(Object object) {
 		if (this == object) {

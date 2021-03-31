@@ -57,6 +57,22 @@ public class MutableLong implements Comparable<MutableLong> {
 		value--;
 	}
 	
+	public void negate() {
+		value = ~value;
+	}
+	
+	public void and(long value) {
+		this.value &= value;
+	}
+	
+	public void or(long value) {
+		this.value |= value;
+	}
+	
+	public void xor(long value) {
+		this.value ^= value;
+	}
+	
 	@Override
 	public boolean equals(Object object) {
 		if (this == object) {

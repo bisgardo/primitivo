@@ -57,6 +57,22 @@ public class MutableByte implements Comparable<MutableByte> {
 		value--;
 	}
 	
+	public void negate() {
+		value = (byte) ~value;
+	}
+	
+	public void and(byte value) {
+		this.value &= value;
+	}
+	
+	public void or(byte value) {
+		this.value |= value;
+	}
+	
+	public void xor(byte value) {
+		this.value ^= value;
+	}
+	
 	@Override
 	public boolean equals(Object object) {
 		if (this == object) {
