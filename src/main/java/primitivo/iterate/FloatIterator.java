@@ -169,14 +169,14 @@ public abstract class FloatIterator implements Iterator<Float> {
 			@Override
 			public Float next() {
 				Float current = iterator.next();
-				if (current == null) {
-					if (nullValue == null) {
-						// Ensure that `next` and `nextFloat` behave identically.
-						throw new NullPointerException("current");
-					}
-					return nullValue;
+				if (current != null) {
+					return current;
 				}
-				return current;
+				if (nullValue == null) {
+					// Ensure that `next` and `nextFloat` behave identically.
+					throw new NullPointerException("current");
+				}
+				return nullValue;
 			}
 			
 			@Override

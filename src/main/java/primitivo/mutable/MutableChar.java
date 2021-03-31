@@ -56,7 +56,7 @@ public class MutableChar implements Comparable<MutableChar> {
 	
 	@Override
 	public int hashCode() {
-		return (int) value;
+		return value;
 	}
 	
 	//@Override

@@ -81,14 +81,14 @@ public abstract class BooleanIterator implements Iterator<Boolean> {
 			@Override
 			public Boolean next() {
 				Boolean current = iterator.next();
-				if (current == null) {
-					if (nullValue == null) {
-						// Ensure that `next` and `nextBoolean` behave identically.
-						throw new NullPointerException("current");
-					}
-					return nullValue;
+				if (current != null) {
+					return current;
 				}
-				return current;
+				if (nullValue == null) {
+					// Ensure that `next` and `nextBoolean` behave identically.
+					throw new NullPointerException("current");
+				}
+				return nullValue;
 			}
 			
 			@Override

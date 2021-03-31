@@ -18,8 +18,8 @@
  * </ul>
  *
  * <p>
- * The classes have getter and setter methods including arithmetic methods
- * for transforming the wrapped value.
+ * The classes have getter and setter methods and methods for performing arithmetic
+ * and bitwise transformations of the wrapped value.
  * They also correctly implement
  * {@link java.lang.Comparable#compareTo(java.lang.Object) compareTo} and
  * {@link java.lang.Object#equals(java.lang.Object) equals}/
@@ -39,11 +39,6 @@
  *     <li>A variable of boxed type is updated while
  *     preventing unnecessary boxings.</li>
  * </ul>
- * <p>
- * It should be stressed that the only purpose of the types is to
- * simplify and optimize internal computations without one having to
- * define custom boilerplate types.
- * They should never be part of external APIs.
  *
  * @author Michael Bisgaard Olesen
  *

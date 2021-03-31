@@ -148,14 +148,14 @@ public abstract class IntIterator implements Iterator<Integer> {
 			@Override
 			public Integer next() {
 				Integer current = iterator.next();
-				if (current == null) {
-					if (nullValue == null) {
-						// Ensure that `next` and `nextInt` behave identically.
-						throw new NullPointerException("current");
-					}
-					return nullValue;
+				if (current != null) {
+					return current;
 				}
-				return current;
+				if (nullValue == null) {
+					// Ensure that `next` and `nextInt` behave identically.
+					throw new NullPointerException("current");
+				}
+				return nullValue;
 			}
 			
 			@Override

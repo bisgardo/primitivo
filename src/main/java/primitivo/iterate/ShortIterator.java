@@ -103,14 +103,14 @@ public abstract class ShortIterator implements Iterator<Short> {
 			@Override
 			public Short next() {
 				Short current = iterator.next();
-				if (current == null) {
-					if (nullValue == null) {
-						// Ensure that `next` and `nextShort` behave identically.
-						throw new NullPointerException("current");
-					}
-					return nullValue;
+				if (current != null) {
+					return current;
 				}
-				return current;
+				if (nullValue == null) {
+					// Ensure that `next` and `nextShort` behave identically.
+					throw new NullPointerException("current");
+				}
+				return nullValue;
 			}
 			
 			@Override

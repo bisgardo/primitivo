@@ -213,14 +213,14 @@ public abstract class DoubleIterator implements Iterator<Double> {
 			@Override
 			public Double next() {
 				Double current = iterator.next();
-				if (current == null) {
-					if (nullValue == null) {
-						// Ensure that `next` and `nextDouble` behave identically.
-						throw new NullPointerException("current");
-					}
-					return nullValue;
+				if (current != null) {
+					return current;
 				}
-				return current;
+				if (nullValue == null) {
+					// Ensure that `next` and `nextDouble` behave identically.
+					throw new NullPointerException("current");
+				}
+				return nullValue;
 			}
 			
 			@Override

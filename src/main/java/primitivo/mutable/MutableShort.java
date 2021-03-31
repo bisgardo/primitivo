@@ -72,7 +72,7 @@ public class MutableShort implements Comparable<MutableShort> {
 	
 	@Override
 	public int hashCode() {
-		return (int) value;
+		return value;
 	}
 	
 	@Override

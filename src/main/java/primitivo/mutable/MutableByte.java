@@ -72,7 +72,7 @@ public class MutableByte implements Comparable<MutableByte> {
 	
 	@Override
 	public int hashCode() {
-		return (int) value;
+		return value;
 	}
 	
 	//@Override

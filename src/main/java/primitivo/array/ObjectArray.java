@@ -10,8 +10,8 @@ public class ObjectArray {
 	public static final Boolean[] EMPTY_BOOLEANS = new Boolean[0];
 	public static final Byte[] EMPTY_BYTES = new Byte[0];
 	public static final Short[] EMPTY_SHORTS = new Short[0];
-	public static final Character[] EMPTY_CHARS = new Character[0];
-	public static final Integer[] EMPTY_INTS = new Integer[0];
+	public static final Character[] EMPTY_CHARACTERS = new Character[0];
+	public static final Integer[] EMPTY_INTEGERS = new Integer[0];
 	public static final Long[] EMPTY_LONGS = new Long[0];
 	public static final Float[] EMPTY_FLOATS = new Float[0];
 	public static final Double[] EMPTY_DOUBLES = new Double[0];
@@ -75,7 +75,7 @@ public class ObjectArray {
 		}
 		int length = characters.length;
 		if (length == 0) {
-			return EMPTY_CHARS;
+			return EMPTY_CHARACTERS;
 		}
 		Character[] result = new Character[length];
 		for (int i = 0; i < length; i++) {
@@ -90,7 +90,7 @@ public class ObjectArray {
 		}
 		int length = integers.length;
 		if (length == 0) {
-			return EMPTY_INTS;
+			return EMPTY_INTEGERS;
 		}
 		Integer[] result = new Integer[length];
 		for (int i = 0; i < length; i++) {
